@@ -103,20 +103,20 @@ function setGlobalTrackers (globalTrackers) {
 // Starts a given TorrentID, which can be an infohash, magnet URI, etc.
 // Returns a WebTorrent object. See https://git.io/vik9M
 function startTorrenting (torrentKey, torrentID, path, fileModtimes, selections) {
-  console.log('+++++',torrentKey, torrentID, path, fileModtimes, selections)
-  console.log('starting torrent %s: %s', torrentKey, torrentID)
+  // console.log('+++++',torrentKey, torrentID, path, fileModtimes, selections)
+  // console.log('starting torrent %s: %s', torrentKey, torrentID)
 
-  const torrent = client.add(torrentID, {
-    path,
-    fileModtimes
-  })
-  torrent.key = torrentKey
+  // const torrent = client.add(torrentID, {
+  //   path,
+  //   fileModtimes
+  // })
+  // torrent.key = torrentKey
 
-  // Listen for ready event, progress notifications, etc
-  addTorrentEvents(torrent)
+  // // Listen for ready event, progress notifications, etc
+  // addTorrentEvents(torrent)
 
-  // Only download the files the user wants, not necessarily all files
-  torrent.once('ready', () => selectFiles(torrent, selections))
+  // // Only download the files the user wants, not necessarily all files
+  // torrent.once('ready', () => selectFiles(torrent, selections))
 }
 
 function stopTorrenting (infoHash) {
