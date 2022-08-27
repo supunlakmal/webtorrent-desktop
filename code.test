@@ -1,0 +1,6 @@
+git clone https://github.com/supunlakmal/webtorrent-desktop.git
+
+cd webtorrent-desktop
+
+npm i
+npm run start

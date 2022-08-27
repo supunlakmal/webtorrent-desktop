@@ -37,6 +37,9 @@ module.exports = class TorrentListController {
     const torrentKey = this.state.nextTorrentKey++
     const path = this.state.saved.prefs.downloadPath
 
+
+    console.log('wt-start-torrenting >>>>>>>>>>>>>', torrentKey, torrentId, path);
+
     ipcRenderer.send('wt-start-torrenting', torrentKey, torrentId, path)
 
     dispatch('backToList')
