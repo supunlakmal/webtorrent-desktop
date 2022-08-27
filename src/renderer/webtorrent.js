@@ -136,10 +136,10 @@ function createTorrent (torrentKey, options) {
 }
 
 function addTorrentEvents (torrent) {
-  // torrent.on('warning', (err) =>
-  //   ipcRenderer.send('wt-warning', torrent.key, err.message))
-  // torrent.on('error', (err) =>
-  //   ipcRenderer.send('wt-error', torrent.key, err.message))
+  torrent.on('warning', (err) =>
+    ipcRenderer.send('wt-warning', torrent.key, err.message))
+  torrent.on('error', (err) =>
+    ipcRenderer.send('wt-error', torrent.key, err.message))
   torrent.on('infoHash', () =>
     ipcRenderer.send('wt-parsed', torrent.key, torrent.infoHash, torrent.magnetURI))
   torrent.on('metadata', torrentMetadata)
