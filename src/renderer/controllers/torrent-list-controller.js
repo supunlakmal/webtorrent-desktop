@@ -145,6 +145,9 @@ module.exports = class TorrentListController {
   }
 
   resumeAllTorrents () {
+
+    console.log('this.state',this.state);
+
     this.state.saved.torrents.forEach((torrentSummary) => {
       if (torrentSummary.status === 'paused') {
         torrentSummary.status = 'downloading'
