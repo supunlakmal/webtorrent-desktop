@@ -136,42 +136,42 @@ function createTorrent (torrentKey, options) {
 }
 
 function addTorrentEvents (torrent) {
-  torrent.on('warning', (err) =>
-    ipcRenderer.send('wt-warning', torrent.key, err.message))
-  torrent.on('error', (err) =>
-    ipcRenderer.send('wt-error', torrent.key, err.message))
+  // torrent.on('warning', (err) =>
+  //   ipcRenderer.send('wt-warning', torrent.key, err.message))
+  // torrent.on('error', (err) =>
+  //   ipcRenderer.send('wt-error', torrent.key, err.message))
   torrent.on('infoHash', () =>
     ipcRenderer.send('wt-parsed', torrent.key, torrent.infoHash, torrent.magnetURI))
-  torrent.on('metadata', torrentMetadata)
-  torrent.on('ready', torrentReady)
-  torrent.on('done', torrentDone)
+  // torrent.on('metadata', torrentMetadata)
+  // torrent.on('ready', torrentReady)
+  // torrent.on('done', torrentDone)
 
-  function torrentMetadata () {
-    const info = getTorrentInfo(torrent)
-    ipcRenderer.send('wt-metadata', torrent.key, info)
+  // function torrentMetadata () {
+  //   const info = getTorrentInfo(torrent)
+  //   ipcRenderer.send('wt-metadata', torrent.key, info)
 
-    updateTorrentProgress()
-  }
+  //   updateTorrentProgress()
+  // }
 
-  function torrentReady () {
-    const info = getTorrentInfo(torrent)
-    ipcRenderer.send('wt-ready', torrent.key, info)
-    ipcRenderer.send('wt-ready-' + torrent.infoHash, torrent.key, info)
+  // function torrentReady () {
+  //   const info = getTorrentInfo(torrent)
+  //   ipcRenderer.send('wt-ready', torrent.key, info)
+  //   ipcRenderer.send('wt-ready-' + torrent.infoHash, torrent.key, info)
 
-    updateTorrentProgress()
-  }
+  //   updateTorrentProgress()
+  // }
 
-  function torrentDone () {
-    const info = getTorrentInfo(torrent)
-    ipcRenderer.send('wt-done', torrent.key, info)
+  // function torrentDone () {
+  //   const info = getTorrentInfo(torrent)
+  //   ipcRenderer.send('wt-done', torrent.key, info)
 
-    updateTorrentProgress()
+  //   updateTorrentProgress()
 
-    torrent.getFileModtimes((err, fileModtimes) => {
-      if (err) return onError(err)
-      ipcRenderer.send('wt-file-modtimes', torrent.key, fileModtimes)
-    })
-  }
+  //   torrent.getFileModtimes((err, fileModtimes) => {
+  //     if (err) return onError(err)
+  //     ipcRenderer.send('wt-file-modtimes', torrent.key, fileModtimes)
+  //   })
+  // }
 }
 
 // Produces a JSON saveable summary of a torrent

@@ -12,9 +12,16 @@ module.exports = class TorrentController {
 
   torrentParsed (torrentKey, infoHash, magnetURI) {
 
-console.log('>>>>>>>>>>>>>>>>>>>>',{torrentKey, infoHash, magnetURI});
+// console.log('>>>>>>>>>>>>>>>>>>>>',{torrentKey, infoHash, magnetURI});
+
+
+
 
     let torrentSummary = this.getTorrentSummary(torrentKey)
+
+    console.log('torrentSummary >>>>>>>>>>>>>>>>>>>>',{torrentSummary});
+
+
     console.log('got infohash for %s torrent %s',
       torrentSummary ? 'existing' : 'new', torrentKey)
 
