@@ -142,16 +142,18 @@ function addTorrentEvents (torrent) {
   //   ipcRenderer.send('wt-error', torrent.key, err.message))
   torrent.on('infoHash', () =>
     ipcRenderer.send('wt-parsed', torrent.key, torrent.infoHash, torrent.magnetURI))
-  // torrent.on('metadata', torrentMetadata)
+  torrent.on('metadata', torrentMetadata)
   // torrent.on('ready', torrentReady)
   // torrent.on('done', torrentDone)
 
-  // function torrentMetadata () {
-  //   const info = getTorrentInfo(torrent)
-  //   ipcRenderer.send('wt-metadata', torrent.key, info)
+  function torrentMetadata () {
 
-  //   updateTorrentProgress()
-  // }
+
+    const info = getTorrentInfo(torrent)
+    ipcRenderer.send('wt-metadata', torrent.key, info)
+
+    updateTorrentProgress()
+  }
 
   // function torrentReady () {
   //   const info = getTorrentInfo(torrent)

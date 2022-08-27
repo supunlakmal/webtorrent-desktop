@@ -70,11 +70,20 @@ module.exports = class TorrentController {
   torrentMetadata (torrentKey, torrentInfo) {
     // Summarize torrent
     const torrentSummary = this.getTorrentSummary(torrentKey)
+
+
     torrentSummary.status = 'downloading'
     torrentSummary.name = torrentSummary.displayName || torrentInfo.name
     torrentSummary.path = torrentInfo.path
+
+    console.log('torrentMetadata',{...torrentSummary});
+
+
+
     // TODO: make torrentInfo immutable, save separately as torrentSummary.info
     // For now, check whether torrentSummary.files has already been set:
+
+
     const hasDetailedFileInfo = torrentSummary.files && torrentSummary.files[0].path
     if (!hasDetailedFileInfo) {
       torrentSummary.files = torrentInfo.files
