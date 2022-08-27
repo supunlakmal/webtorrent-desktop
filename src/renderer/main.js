@@ -426,6 +426,9 @@ function setGlobalTrackers () {
 
 // Starts all torrents that aren't paused on program startup
 function resumeTorrents () {
+
+
+  console.log('state.saved.torrents' ,state.saved.torrents);
   state.saved.torrents
     .map((torrentSummary) => {
       // Torrent keys are ephemeral, reassigned each time the app runs.
