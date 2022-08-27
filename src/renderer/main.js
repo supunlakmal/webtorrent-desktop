@@ -428,16 +428,16 @@ function setGlobalTrackers () {
 function resumeTorrents () {
 
 
-  // console.log('state.saved.torrents' ,state.saved.torrents);
-  // state.saved.torrents
-  //   .map((torrentSummary) => {
-  //     // Torrent keys are ephemeral, reassigned each time the app runs.
-  //     // On startup, give all torrents a key, even the ones that are paused.
-  //     torrentSummary.torrentKey = state.nextTorrentKey++
-  //     return torrentSummary
-  //   })
-  //   .filter((s) => s.status !== 'paused')
-  //   .forEach((s) => controllers.torrentList().startTorrentingSummary(s.torrentKey))
+  console.log('state.saved.torrents' ,state.saved.torrents);
+  state.saved.torrents
+    .map((torrentSummary) => {
+      // Torrent keys are ephemeral, reassigned each time the app runs.
+      // On startup, give all torrents a key, even the ones that are paused.
+      torrentSummary.torrentKey = state.nextTorrentKey++
+      return torrentSummary
+    })
+    .filter((s) => s.status !== 'paused')
+    .forEach((s) => controllers.torrentList().startTorrentingSummary(s.torrentKey))
 }
 
 // Set window dimensions to match video dimensions or fill the screen
