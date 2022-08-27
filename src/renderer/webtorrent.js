@@ -1,6 +1,6 @@
 // To keep the UI snappy, we run WebTorrent in its own hidden window, a separate
 // process from the main window.
-console.time('init')
+// console.time('init')
 
 const crypto = require('crypto')
 const util = require('util')
@@ -87,7 +87,7 @@ function init () {
   true)
 
   setInterval(updateTorrentProgress, 1000)
-  console.timeEnd('init')
+  // console.timeEnd('init')
 }
 
 function listenToClientEvents () {
@@ -106,11 +106,11 @@ function startTorrenting (torrentKey, torrentID, path, fileModtimes, selections)
   console.log('+++++',torrentKey, torrentID, path, fileModtimes, selections)
   console.log('starting torrent %s: %s', torrentKey, torrentID)
 
-  // const torrent = client.add(torrentID, {
-  //   path,
-  //   fileModtimes
-  // })
-  // torrent.key = torrentKey
+  const torrent = client.add(torrentID, {
+    path,
+    fileModtimes
+  })
+  torrent.key = torrentKey
 
   // // Listen for ready event, progress notifications, etc
   // addTorrentEvents(torrent)
