@@ -112,11 +112,11 @@ function startTorrenting (torrentKey, torrentID, path, fileModtimes, selections)
   })
   torrent.key = torrentKey
 
-  // // Listen for ready event, progress notifications, etc
-  // addTorrentEvents(torrent)
+  // Listen for ready event, progress notifications, etc
+  addTorrentEvents(torrent)
 
-  // // Only download the files the user wants, not necessarily all files
-  // torrent.once('ready', () => selectFiles(torrent, selections))
+  // Only download the files the user wants, not necessarily all files
+  torrent.once('ready', () => selectFiles(torrent, selections))
 }
 
 function stopTorrenting (infoHash) {
