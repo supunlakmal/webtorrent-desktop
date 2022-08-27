@@ -352,7 +352,7 @@ const dispatchHandlers = {
 function dispatch (action, ...args) {
   // Log dispatch calls, for debugging, but don't spam
   if (!['mediaMouseMoved', 'mediaTimeUpdate', 'update'].includes(action)) {
-    console.log('dispatch: %s %o', action, args)
+    console.log('++ dispatch: %s %o', action, args)
   }
 
   const handler = dispatchHandlers[action]
