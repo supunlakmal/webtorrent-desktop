@@ -197,12 +197,16 @@ function getTorrentFileInfo (file) {
   }
 }
 
+//TODO SUPUN torrent save
 // Every time we resolve a magnet URI, save the torrent file so that we can use
 // it on next startup. Starting with the full torrent metadata will be faster
 // than re-fetching it from peers using ut_metadata.
 function saveTorrentFile (torrentKey) {
   const torrent = getTorrent(torrentKey)
   const torrentPath = path.join(config.TORRENT_PATH, torrent.infoHash + '.torrent')
+
+
+console.log({torrentPath});
 
   fs.access(torrentPath, fs.constants.R_OK, err => {
     const fileName = torrent.infoHash + '.torrent'
